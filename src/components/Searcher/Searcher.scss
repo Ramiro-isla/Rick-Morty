@@ -1,0 +1,25 @@
+.searcher-container {
+  display: flex;
+  justify-content: center;
+  .searcher {
+    display: flex;
+    background-color: #fff;
+    border-radius: 15px;
+    .searcher-input {
+      border: none;
+      padding-left: 8px;
+      border-radius: 15px;
+      width: 19rem;
+    }
+    button {
+      background: none;
+      border: none;
+      padding: 0;
+      height: 35px;
+      img {
+        width: 25px;
+        padding:4px 10px;
+      }
+    }
+  }
+}

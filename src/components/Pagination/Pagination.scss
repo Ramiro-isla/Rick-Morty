@@ -1,0 +1,21 @@
+@import "../../assets/sass/mixins.scss";
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  color: white;
+  .prev-button {
+    @include PaginstionButton;
+  }
+  .page-button {
+    @include PaginstionButton;
+  }
+  .current-page-button {
+    @include PaginstionButton;
+    background-color: #7e65ff;
+  }
+
+  .next-button {
+    @include PaginstionButton;
+  }
+}
