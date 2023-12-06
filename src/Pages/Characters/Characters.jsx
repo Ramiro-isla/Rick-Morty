@@ -5,7 +5,7 @@ import Pagination from "../../components/Pagination/Pagination";
 import RickYMorty from "../../components/RickYMorthy/RickYMorty";
 import Searcher from "../../components/Searcher/Searcher";
 
-const Characters = ({favouriteCharacter, setFavouriteCharacter}) => {
+const Characters = ({ favouriteCharacter, setFavouriteCharacter }) => {
   const [characters, setCharacters] = useState([]);
   const [info, setInfo] = useState({});
   const [page, setPage] = useState(1);

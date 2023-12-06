@@ -12,7 +12,6 @@ const LogInForm = ({ users, setUsers, saveUser }) => {
     ev.preventDefault();
     const existUsers = checkUser(form);
     saveUser(existUsers);
-    console.log(users);
   };
   const handleSubmit = (ev) => {
     const { name, value } = ev.target;

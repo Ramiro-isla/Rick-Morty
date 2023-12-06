@@ -3,8 +3,25 @@ import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import LoginPage from "./Pages/LoginPage/LoginPage";
 import Characters from "./Pages/Characters/Characters";
+import FavouritesCharacters from "./Pages/FavouritesCharacters/FavouritesCharacters";
+
 function App() {
-  const [favouriteCharacter, setFavouriteCharacter] = useState([]);
+  const initialFavouriteCharacter =
+    JSON.parse(localStorage.getItem("favouriteCharacter")) || [];
+  const [favouriteCharacter, setFavouriteCharacter] = useState(
+    initialFavouriteCharacter
+  );
+
+  const deleteFavouriteCharacter = (character) => {
+    const fiteredCharacter = favouriteCharacter.filter(
+      (favouriteCharacter) => favouriteCharacter !== character
+    );
+    localStorage.setItem(
+      "favouriteCharacter",
+      JSON.stringify(fiteredCharacter)
+    );
+    setFavouriteCharacter(fiteredCharacter);
+  };
 
   return (
     <div className="App">
@@ -23,7 +40,10 @@ function App() {
         <Route
           path="/MyFavourites"
           element={
-            <favouriteCharacter favouriteCharacter={favouriteCharacter} />
+            <FavouritesCharacters
+              favouriteCharacter={favouriteCharacter}
+              deleteFavouriteCharacter={deleteFavouriteCharacter}
+            />
           }
         />
       </Routes>

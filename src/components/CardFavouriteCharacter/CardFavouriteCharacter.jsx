@@ -1,32 +1,33 @@
 import React from "react";
-import like from "../../assets/like.png";
-import likeRed from "../../assets/like-red.png";
-import "./CardCharacter.scss";
-import { useState } from "react";
+import Trash from "../../assets/trash.png";
+import "./CardFavouriteCharacter.scss";
 
 const CardFavouriteCharacter = ({
-  character,
+  favouriteCharacter,
+  deleteFavouriteCharacter,
 }) => {
-
   return (
-    <section className="card-container">
-      <img src={character.image} alt={`${character.name}`} />
-      <h2>
-        {character.name.length > 22
-          ? character.name.substring(0, 23) + "..."
-          : character.name}
+    <section className="card-favourite-container">
+      <img
+        className="card-favourite-image"
+        src={favouriteCharacter.image}
+        alt={`${favouriteCharacter.name}`}
+      />
+      <h2 className="card-favourite-name">
+        {favouriteCharacter.name.length > 22
+          ? favouriteCharacter.name.substring(0, 23) + "..."
+          : favouriteCharacter.name}
       </h2>
-      <div>
-        <p>Gender: {character.gender}</p>
-        <p>Specie: {character.species}</p>
-        <button onClick={() => addFavourite(character)}>
-          {favourite ? (
-            <img src={likeRed} alt="like-button" />
-          ) : (
-            <img src={like} alt="like-button" />
-          )}
-        </button>
+      <div className="card-favourites-text-container">
+        <p>Gender: {favouriteCharacter.gender}</p>
+        <p>Specie: {favouriteCharacter.species}</p>
       </div>
+      <button
+        className="card-favourites-button"
+        onClick={() => deleteFavouriteCharacter(favouriteCharacter)}
+      >
+        <img className="card-favourites-button-image" src={Trash} alt="trash" />
+      </button>
     </section>
   );
 };

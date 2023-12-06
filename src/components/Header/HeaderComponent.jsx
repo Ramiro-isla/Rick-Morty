@@ -7,6 +7,7 @@ const HeaderComponent = () => {
       <nav>
         <Link to="/">Login</Link>
         <Link to="/characters">Characters</Link>
+        <Link to="/MyFavourites">My Favourites</Link>
       </nav>
     </header>
   );

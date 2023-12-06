@@ -1,0 +1,10 @@
+.favourites-characters-container {
+  display: flex;
+  flex-direction: column;
+  .Card-favourite-character {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 50px 0;
+  }
+}

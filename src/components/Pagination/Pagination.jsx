@@ -1,7 +1,6 @@
 import React from "react";
 import "./Pagination.scss";
 const Pagination = ({ getCharacters, info, page, setPage }) => {
-  console.log(info);
   const goToPage = (pageNumber) => {
     getCharacters(
       `https://rickandmortyapi.com/api/character?page=${pageNumber}`

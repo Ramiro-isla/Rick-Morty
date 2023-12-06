@@ -12,11 +12,11 @@ const CardCharacter = ({
 }) => {
   const [favourite, setFavourite] = useState(false);
   const addFavourite = (ev) => {
-    console.log(ev);
-    const fiteredCharacter = characters.filter((character) => character == ev);
-    const newcharacters = [...favouriteCharacter, fiteredCharacter];
+    const filteredCharacter = characters
+      .filter((character) => character == ev)
+      .shift();
+    const newcharacters = [...favouriteCharacter, filteredCharacter];
     setFavouriteCharacter(newcharacters);
-    console.log(favouriteCharacter);
     setFavourite(true);
   };
 
