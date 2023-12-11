@@ -11,7 +11,7 @@ const FavouritesCharacters = ({
     <div className="favourites-characters-container">
       <HeaderComponent />
       <div className="Card-favourite-character">
-        {favouriteCharacter.length === 0 && <h2>No hay ningún usuario</h2>}
+        {favouriteCharacter.length === 0 && <h2>Empty favorites list</h2>}
         {favouriteCharacter.map((favouriteCharacter) => (
           <div>
             <CardFavouriteCharacter

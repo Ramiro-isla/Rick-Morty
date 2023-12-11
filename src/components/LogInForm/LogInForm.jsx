@@ -1,17 +1,18 @@
 import React from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, redirect, useNavigate } from "react-router-dom";
 import { checkUser } from "../../helpers/auth.helper";
 import "./LogInForm.scss";
 
 const INITIAL_VALUE = { name: "", password: "" };
-const LogInForm = ({ users, setUsers, saveUser }) => {
+const LogInForm = ({ saveUser }) => {
   const [form, setForm] = useState(INITIAL_VALUE);
-
+  const navigate = useNavigate();
   const submitForm = (ev) => {
     ev.preventDefault();
     const existUsers = checkUser(form);
     saveUser(existUsers);
+    navigate("/characters");
   };
   const handleSubmit = (ev) => {
     const { name, value } = ev.target;
@@ -24,6 +25,7 @@ const LogInForm = ({ users, setUsers, saveUser }) => {
     <form onSubmit={submitForm}>
       <div>
         <p>Hello!</p>
+        <p className="login_info">LogIn to see all the characters</p>
         <h2>
           <span>Login</span> your account
         </h2>
@@ -45,7 +47,7 @@ const LogInForm = ({ users, setUsers, saveUser }) => {
             name="password"
           />
         </div>
-        <button>LogIn</button>
+        <button onClick={submitForm}>LogIn</button>
         <Link to="/register">Create an Account</Link>
       </div>
     </form>

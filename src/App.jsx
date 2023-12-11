@@ -4,21 +4,15 @@ import { Routes, Route } from "react-router-dom";
 import LoginPage from "./Pages/LoginPage/LoginPage";
 import Characters from "./Pages/Characters/Characters";
 import FavouritesCharacters from "./Pages/FavouritesCharacters/FavouritesCharacters";
+import AuthRoute from "./components/AuthRoute/AuthRoute";
 
 function App() {
-  const initialFavouriteCharacter =
-    JSON.parse(localStorage.getItem("favouriteCharacter")) || [];
-  const [favouriteCharacter, setFavouriteCharacter] = useState(
-    initialFavouriteCharacter
-  );
+  const [favouriteCharacter, setFavouriteCharacter] = useState([]);
+  const [users, setUsers] = useState(null);
 
   const deleteFavouriteCharacter = (character) => {
     const fiteredCharacter = favouriteCharacter.filter(
       (favouriteCharacter) => favouriteCharacter !== character
-    );
-    localStorage.setItem(
-      "favouriteCharacter",
-      JSON.stringify(fiteredCharacter)
     );
     setFavouriteCharacter(fiteredCharacter);
   };
@@ -26,17 +20,29 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route exact path="/" element={<LoginPage />} />
+        <Route
+          exact
+          path="/"
+          element={<LoginPage  setUsers={setUsers} />}
+        />
         <Route
           path="/characters"
           element={
-            <Characters
-              favouriteCharacter={favouriteCharacter}
-              setFavouriteCharacter={setFavouriteCharacter}
+            <AuthRoute
+              users={users}
+              component={
+                <Characters
+                  favouriteCharacter={favouriteCharacter}
+                  setFavouriteCharacter={setFavouriteCharacter}
+                />
+              }
             />
           }
         />
-        <Route path="/register" element={<Characters />} />
+        <Route
+          path="/register"
+          element={<AuthRoute users={users} component={<Characters />} />}
+        />
         <Route
           path="/MyFavourites"
           element={
