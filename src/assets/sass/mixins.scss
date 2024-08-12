@@ -1,11 +1,11 @@
-@mixin PaginstionButton {
-  background: none;
-  width: 50px;
-  height: 50px;
+@mixin PaginstionButton($size, $background, $font-size, $margin) {
+  background: $background;
+  width: $size;
+  height: $size;
   border-radius: 100%;
   border: 2px solid white;
   color: white;
-  font-size: 25px;
-  margin: 10px;
+  font-size: $font-size;
+  margin: $margin;
   font-weight: bold;
 }

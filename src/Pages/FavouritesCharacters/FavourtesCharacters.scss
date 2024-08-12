@@ -1,6 +1,9 @@
 .favourites-characters-container {
   display: flex;
   flex-direction: column;
+  h2 {
+    color: white;
+  }
   .Card-favourite-character {
     display: flex;
     flex-wrap: wrap;

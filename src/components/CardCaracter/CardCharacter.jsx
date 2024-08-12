@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import like from "../../assets/like.png";
 import likeRed from "../../assets/like-red.png";
 import "./CardCharacter.scss";
-import { useState } from "react";
 
 const CardCharacter = ({
   character,
@@ -10,14 +9,31 @@ const CardCharacter = ({
   favouriteCharacter,
   setFavouriteCharacter,
 }) => {
-  const [favourite, setFavourite] = useState(false);
+  const [favourite, setFavourite] = useState(
+    favouriteCharacter.some((favCharacter) => favCharacter.id === character.id)
+  );
+
+  useEffect(() => {
+    setFavourite(
+      favouriteCharacter.some(
+        (favCharacter) => favCharacter.id === character.id
+      )
+    );
+  }, [favouriteCharacter, character.id]);
+
   const addFavourite = (ev) => {
-    const filteredCharacter = characters
-      .filter((character) => character == ev)
-      .shift();
-    const newcharacters = [...favouriteCharacter, filteredCharacter];
-    setFavouriteCharacter(newcharacters);
-    setFavourite(true);
+    const isAlreadyFavourite = favouriteCharacter.some(
+      (favCharacter) => favCharacter.id === ev.id
+    );
+    if (!isAlreadyFavourite) {
+      const filteredCharacter = characters
+        .filter((character) => character.id === ev.id)
+        .shift();
+      const newcharacters = [...favouriteCharacter, filteredCharacter];
+      setFavouriteCharacter(newcharacters);
+    } else {
+      alert("El personaje ya está en la lista de favoritos.");
+    }
   };
 
   return (

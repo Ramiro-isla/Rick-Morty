@@ -40,3 +40,31 @@
     }
   }
 }
+
+@media (max-width: 320px) {
+  .card-favourite-container {
+    img {
+      width: 250px;
+      height: 250px;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+      width: 80%;
+    }
+
+    div {
+      p {
+        font-size: 1rem;
+      }
+      button {
+        height: 30px;
+        width: 30px;
+        img {
+          width: 20px;
+          color: red;
+        }
+      }
+    }
+  }
+}

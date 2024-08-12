@@ -4,18 +4,53 @@
   justify-content: center;
   width: 100%;
   color: white;
+  margin-bottom: 20px;
   .prev-button {
-    @include PaginstionButton;
+    @include PaginstionButton(50px, none, 1.3rem, 10px);
   }
   .page-button {
-    @include PaginstionButton;
+    @include PaginstionButton(50px, none, 1.3rem, 10px);
   }
   .current-page-button {
-    @include PaginstionButton;
-    background-color: #7e65ff;
+    @include PaginstionButton(50px, #7e65ff, 1.3rem, 10px);
   }
 
   .next-button {
-    @include PaginstionButton;
+    @include PaginstionButton(50px, none, 1.3rem, 10px);
+  }
+}
+
+@media (max-width: 375px) {
+  .pagination-container {
+    .prev-button {
+      @include PaginstionButton(40px, none, 1.3rem, 10px);
+    }
+    .page-button {
+      @include PaginstionButton(40px, none, 1.3rem, 10px);
+    }
+    .current-page-button {
+      @include PaginstionButton(40px, #7e65ff, 1.3rem, 10px);
+    }
+
+    .next-button {
+      @include PaginstionButton(40px, none, 1.3rem, 10px);
+    }
+  }
+}
+@media (max-width: 320px) {
+  .pagination-container {
+    .prev-button {
+      @include PaginstionButton(40px, none, 1.2rem, 7px);
+    }
+    .page-button {
+      @include PaginstionButton(40px, none, 1.2rem, 5px);
+    }
+    .current-page-button {
+      @include PaginstionButton(40px, #7e65ff, 1.2rem, 5px);
+    }
+
+    .next-button {
+      @include PaginstionButton(40px, none, 1.2rem, 5px);
+    }
   }
 }
